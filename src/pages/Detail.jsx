@@ -1,6 +1,7 @@
 import Avatar from "components/common/Avatar";
 import Button from "components/common/Button";
-import React, { useState } from "react";
+import { LetterContext } from "context/LetterContext";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getFomattedDate } from "util/date";
@@ -72,7 +73,8 @@ const Textarea = styled.textarea`
   color: white;
 `;
 
-function Detail({ letters, setLetters }) {
+function Detail() {
+  const {letters, setLetters} = useContext(LetterContext)
   const [editingText, setEditingText] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();

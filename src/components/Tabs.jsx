@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { MemberContext } from "context/MemberContext";
+import React, { useContext, useState } from "react";
 import styled, { css } from "styled-components";
 
-export default function Tabs({activeMember, setActiveMember}) {
+export default function Tabs() {
 
+  const {activeMember, setActiveMember} =useContext(MemberContext)
  
  const onActiveMember = (e) => {
     if(e.target === e.curruentTarget) return

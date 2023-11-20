@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 import Button from "./common/Button";
+import { LetterContext } from "context/LetterContext";
 
 const Form = styled.form`
   background-color: gray;
@@ -39,7 +40,8 @@ const SelectWrapper = styled(InputWrapper)`
 `;
 
 
-export default function AddForm({setLetters}) {
+export default function AddForm() {
+  const {setLetters} = useContext(LetterContext)
   const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
   const [member, setMember] = useState("카리나");

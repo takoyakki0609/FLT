@@ -1,9 +1,7 @@
 import AddForm from 'components/AddForm'
 import Header from 'components/Header'
 import LetterList from 'components/LetterList'
-import React, { useState } from 'react'
 import styled from 'styled-components'
-import fakeData from "fakeData.json";
 
 const Container = styled.div`
     display: flex;
@@ -11,14 +9,14 @@ const Container = styled.div`
     align-items: center;
 `
 
-function Home({letters, setLetters}) {
-    const [activeMember, setActiveMember] = useState("카리나");
+function Home() {
+
     
   return (
     <Container>
-        <Header activeMember={activeMember} setActiveMember={setActiveMember}/>
-        <AddForm setLetters={setLetters}/>
-        <LetterList letters={letters} activeMember={activeMember}/>
+        <Header/>
+        <AddForm/>
+        <LetterList/>
 
     </Container>
   )
