@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 import Button from "./common/Button";
-import { LetterContext } from "context/LetterContext";
 import { useDispatch } from "react-redux";
-import { addLetter } from "redux/modules/letters";
+import { addLetter, addLetters } from "redux/modules/letters";
 
 const Form = styled.form`
   background-color: gray;
@@ -63,7 +62,7 @@ export default function AddForm() {
     };
 
     // setLetters((prev) => [newLetter, ...prev]);
-    dispatch(addLetter(newLetter))
+    dispatch(addLetters(newLetter))
     setNickname("")
     setContent("")
   };
