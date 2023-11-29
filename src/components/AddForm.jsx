@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 import Button from "./common/Button";
 import { LetterContext } from "context/LetterContext";
+import { useDispatch } from "react-redux";
+import { addLetter } from "redux/modules/letters";
 
 const Form = styled.form`
   background-color: gray;
@@ -41,7 +43,8 @@ const SelectWrapper = styled(InputWrapper)`
 
 
 export default function AddForm() {
-  const {setLetters} = useContext(LetterContext)
+  const dispatch = useDispatch('')
+  // const {setLetters} = useContext(LetterContext)
   const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
   const [member, setMember] = useState("카리나");
@@ -59,7 +62,8 @@ export default function AddForm() {
       writedTo: member,
     };
 
-    setLetters((prev) => [newLetter, ...prev]);
+    // setLetters((prev) => [newLetter, ...prev]);
+    dispatch(addLetter(newLetter))
     setNickname("")
     setContent("")
   };

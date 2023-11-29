@@ -5,6 +5,8 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getFomattedDate } from "util/date";
+import {useSelector, useDispatch} from "react-redux"
+import { deleteLetter, editLetter } from "redux/modules/letters";
 
 const Container = styled.div`
   position: relative;
@@ -74,7 +76,10 @@ const Textarea = styled.textarea`
 `;
 
 function Detail() {
-  const {letters, setLetters} = useContext(LetterContext)
+  const dispatch = useDispatch();
+  const letters = useSelector(state=>state.letters)
+  const member = useSelector(state=> state.member)
+  // const {letters, setLetters} = useContext(LetterContext)
   const [editingText, setEditingText] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();
@@ -86,21 +91,25 @@ function Detail() {
   const onDeleteBtn = () => {
     const answer = window.confirm("정말로 삭제 하시겠습니까?");
     if (!answer) return;
-    const newLetters = letters.filter((letter) => letter.id !== id);
+    // const newLetters = letters.filter((letter) => letter.id !== id);
+    // setLetters(newLetters);
+    dispatch(deleteLetter(id))
     navigate("/");
-    setLetters(newLetters);
+    
   };
 
   const onEditDone = () => {
     if (!editingText) return alert("수정사항이 없습니다.");
 
-    const newLetters = letters.map((letter) => {
-      if (letter.id === id) {
-        return { ...letter, content: editingText };
-      }
-      return letter;
-    });
-    setLetters(newLetters);
+    dispatch(editLetter({id, editingText}))
+    // const newLetters = letters.map((letter) => {
+    //   if (letter.id === id) {
+    //     return { ...letter, content: editingText };
+    //   }
+    //   return letter;
+    // });
+    // setLetters(newLetters);
+
     setIsEditing(false)
     setEditingText("")
   };
