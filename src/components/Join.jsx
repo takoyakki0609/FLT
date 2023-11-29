@@ -1,23 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
 import { Link } from "react-router-dom";
+import Button from "./common/Button";
 
-function Login() {
+function Join() {
   return (
     <Container>
-      <LoginBox>
-        <h3>로그인</h3>
-        <input type="id" placeholder="아이디(4~10글자)" minLength="4" maxLength="10" />
-        <input type="password" placeholder="비밀번호(4~15글자)" minLength="4" maxLength="15"/>
-        <Button text="로그인" />
-        <Link to="/join">회원가입</Link>
-      </LoginBox>
-    </Container>
-  );
+    <LoginBox>
+      <h3>회원가입</h3>
+      <input type="id" placeholder="아이디(4~10글자)" minLength="4" maxLength="10" />
+      <input type="password" placeholder="비밀번호(4~15글자)" minLength="4" maxLength="15"/>
+      <input type="nickname" placeholder="닉네임(1~15글자)" minLength="1" maxLength="10"/>
+      <Button text="회원가입"/>
+      <Link to="/join">로그인</Link>
+    </LoginBox>
+  </Container>
+  )
 }
 
-export default Login;
+export default Join
 
 const Container = styled.div`
   background-color: #b6bbc4;

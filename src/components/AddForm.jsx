@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { v4 as uuid } from "uuid";
 import Button from "./common/Button";
 import { useDispatch } from "react-redux";
-import { addLetter, addLetters } from "redux/modules/letters";
+import { addLetters } from "redux/modules/letters";
 
 const Form = styled.form`
   background-color: gray;
