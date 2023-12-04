@@ -43,7 +43,6 @@ const SelectWrapper = styled(InputWrapper)`
 
 export default function AddForm() {
   const dispatch = useDispatch('')
-  // const {setLetters} = useContext(LetterContext)
   const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
   const [member, setMember] = useState("카리나");
@@ -61,7 +60,7 @@ export default function AddForm() {
       writedTo: member,
     };
 
-    // setLetters((prev) => [newLetter, ...prev]);
+
     dispatch(addLetters(newLetter))
     setNickname("")
     setContent("")

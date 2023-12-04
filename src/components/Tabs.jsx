@@ -11,7 +11,7 @@ export default function Tabs() {
 
  const onActiveMember = (e) => {
     if(e.target === e.curruentTarget) return
-    // setActiveMember(e.target.textContent)
+
     dispatch(setMember(e.target.textContent))
  }
   return (

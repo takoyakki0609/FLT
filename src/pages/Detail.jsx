@@ -1,7 +1,6 @@
 import Avatar from "components/common/Avatar";
 import Button from "components/common/Button";
-import { LetterContext } from "context/LetterContext";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { getFomattedDate } from "util/date";
@@ -78,7 +77,6 @@ const Textarea = styled.textarea`
 function Detail() {
   const dispatch = useDispatch();
   const letters = useSelector(state=>state.letters)
-  const member = useSelector(state=> state.member)
   // const {letters, setLetters} = useContext(LetterContext)
   const [editingText, setEditingText] = useState("");
   const [isEditing, setIsEditing] = useState(false);
@@ -91,8 +89,7 @@ function Detail() {
   const onDeleteBtn = () => {
     const answer = window.confirm("정말로 삭제 하시겠습니까?");
     if (!answer) return;
-    // const newLetters = letters.filter((letter) => letter.id !== id);
-    // setLetters(newLetters);
+
     dispatch(deleteLetter(id))
     navigate("/");
     
@@ -102,13 +99,6 @@ function Detail() {
     if (!editingText) return alert("수정사항이 없습니다.");
 
     dispatch(editLetter({id, editingText}))
-    // const newLetters = letters.map((letter) => {
-    //   if (letter.id === id) {
-    //     return { ...letter, content: editingText };
-    //   }
-    //   return letter;
-    // });
-    // setLetters(newLetters);
 
     setIsEditing(false)
     setEditingText("")
